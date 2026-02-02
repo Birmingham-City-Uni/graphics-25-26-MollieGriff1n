@@ -1,4 +1,5 @@
 #pragma once
+using namespace std;
 
 #include <ostream>
 
@@ -17,6 +18,9 @@ public:
 	Vector3()
 	{
 		// YOUR CODE HERE
+		x_ = 0;
+		y_ = 0;
+		z_ = 0;
 	}
 
 	// This constructor can be used to set the x, y and z components of a vector when it
@@ -25,18 +29,24 @@ public:
 	Vector3(float x, float y, float z)
 	{
 		// YOUR CODE HERE
+		x_ = x;
+		y_ = y;
+		z_ = z;
 	}
 
 	// Implement this method to add two vectors.
 	Vector3 operator+(const Vector3& other) const
 	{
 		// YOUR CODE HERE
+		return Vector3(other.x() + x_, other.y() + y_, other.z() + z_);
+		
 	}
 
 	// Multiply the vector by a scalar.
 	Vector3 operator*(float scalar) const
 	{
 		// YOUR CODE HERE
+		return Vector3(x_ * scalar, y_ * scalar, z_ * scalar); 
 	}
 
 	// Get a component of the vector
@@ -49,6 +59,10 @@ public:
 	float& operator[](int i)
 	{
 		// YOUR CODE HERE
+		if (i == 0) return x_;
+		if (i == 1) return y_;
+		if (i == 2) return z_;
+		else throw runtime_error("Incorrect access");
 	}
 
 	// This is the const version of the [] operator.
@@ -57,6 +71,12 @@ public:
 	float operator[](int i) const
 	{
 		// YOUR CODE HERE
+		if (i == 0) return x_;
+		if (i == 1) return y_;
+		if (i == 2) return z_;
+		else throw runtime_error("Incorrect access");
+
+		return 0;
 	}
 
 	// I have already written these getters for you.
